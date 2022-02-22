@@ -14,8 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+from aiWEB import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # http://127.0.0.1:8000/index
+    path('index/',views.index),
+    # http://127.0.0.1:8000/blog/
+    path('blog/',include('blogApp.urls')),
+    # http://127.0.0.1:8000/bbs/
+    path('bbs/',include('bbsApp.urls')),
+    # http://127.0.0.1:8000/user/
+    path('user/',include('userApp.urls'))
 ]
